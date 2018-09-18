@@ -1,6 +1,6 @@
-# vue-cli-plugin-pure-auth
+# vue-cli-plugin-`<name>`
 
-Django Rest Framework Auth Plugin for [vue-cli@3.0](https://github.com/vuejs/vue-cli)
+<description> for [vue-cli@3.0](https://github.com/vuejs/vue-cli)
 
 ## Install
 
@@ -13,24 +13,24 @@ Generate a project using vue-cli 3.0
 vue create my-app
 ```
 
-Before installing the pure-auth plugin, make sure to commit or stash your changes in case you need to revert
+Before installing the `<name>` plugin, make sure to commit or stash your changes in case you need to revert
 
-To install the pure-auth plugin...
+To install the `<name>` plugin...
 ```
 cd my-app
 vue add vuetify
-vue add pure-auth
+vue add `<name>`
 ```
 
 ## Using with other plugins
 
-### Electron
+### Electron - Vuetify
 
-Just add [vue-cli-plugin-electron-builder](https://www.npmjs.com/package/vue-cli-plugin-electron-builder)
+Just add [vue-cli-plugin-electron-builder](https://www.npmjs.com/package/vue-cli-plugin-electron-builder) and [vue-cli-plugin-vuetify](https://www.npmjs.com/package/vue-cli-plugin-vuetify)
 
 ```
 vue add electron-builder
 vue add vuetify
-vue add pure-auth
+vue add `<name>`
 yarn serve:electron
 ```
