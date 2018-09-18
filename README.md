@@ -31,6 +31,6 @@ Just add [vue-cli-plugin-electron-builder](https://www.npmjs.com/package/vue-cli
 ```
 vue add electron-builder
 vue add vuetify
-vue add `<name>`
+vue add modular-vuex
 yarn serve:electron
 ```
