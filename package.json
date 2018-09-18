@@ -1,0 +1,29 @@
+{
+  "name": "vue-cli-plugin-pure-auth",
+  "version": "0.1.0",
+  "description": "vue-cli 3 plugin to connect to Django Rest Framework auth API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PureConstructs/vue-cli-plugin-pure-auth.git"
+  },
+  "keywords": [
+    "vuetify",
+    "django-rest-framework",
+    "auth",
+    "session",
+    "idletimer",
+    "vue",
+    "cli",
+    "3"
+  ],
+  "author": "Eric Cormier <Eric@Pureconstructs.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/PureConstructs/vue-cli-plugin-pure-auth#readme",
+  "devDependencies": {
+    "@vue/cli-service": "^3.0.1"
+  }
+}
