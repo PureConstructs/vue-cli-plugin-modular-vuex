@@ -1,6 +1,6 @@
 # vue-cli-plugin-modular-vuex
 
-<description> for [vue-cli@3.0](https://github.com/vuejs/vue-cli)
+Create Modular Vuex stores for [vue-cli@3.0](https://github.com/vuejs/vue-cli)
 
 ## Install
 
@@ -18,7 +18,7 @@ Before installing the modular-vuex plugin, make sure to commit or stash your cha
 To install the modular-vuex plugin...
 ```
 cd my-app
-vue add vuetify
+vue add vuex
 vue add modular-vuex
 ```
 
