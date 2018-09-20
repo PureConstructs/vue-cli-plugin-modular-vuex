@@ -1,29 +1,28 @@
 {
-  "name": "vue-cli-plugin-pure-auth",
+  "name": "vue-cli-plugin-modular-vuex",
   "version": "0.1.0",
-  "description": "vue-cli 3 plugin to connect to Django Rest Framework auth API",
+  "description": "vue-cli 3 plugin to create modular vuex stores",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PureConstructs/vue-cli-plugin-pure-auth.git"
+    "url": "git+https://github.com/PureConstructs/vue-cli-plugin-modular-vuex.git"
   },
   "keywords": [
-    "vuetify",
-    "django-rest-framework",
-    "auth",
-    "session",
-    "idletimer",
+    "vuex",
     "vue",
     "cli",
     "3"
   ],
   "author": "Eric Cormier <Eric@Pureconstructs.com>",
   "license": "MIT",
-  "homepage": "https://github.com/PureConstructs/vue-cli-plugin-pure-auth#readme",
+  "homepage": "https://github.com/PureConstructs/vue-cli-plugin-modular-vuexh#readme",
   "devDependencies": {
     "@vue/cli-service": "^3.0.1"
+  },
+  "dependencies": {
+    "recast": "^0.15.5"
   }
 }
