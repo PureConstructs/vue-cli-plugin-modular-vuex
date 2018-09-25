@@ -18,8 +18,16 @@ Before installing the modular-vuex plugin, make sure to commit or stash your cha
 To install the modular-vuex plugin...
 ```
 cd my-app
-vue add vuex
+vue add vuex // if you haven't selected to add vuex during the vue create stage
 vue add modular-vuex
+```
+
+## Usage
+
+Invoke to generate a new store module
+
+```
+vue invoke modular-vuex
 ```
 
 ## Using with other plugins
@@ -29,8 +37,9 @@ vue add modular-vuex
 Just add [vue-cli-plugin-electron-builder](https://www.npmjs.com/package/vue-cli-plugin-electron-builder) and [vue-cli-plugin-vuetify](https://www.npmjs.com/package/vue-cli-plugin-vuetify)
 
 ```
+vue add vuex
 vue add electron-builder
 vue add vuetify
 vue add modular-vuex
-yarn serve:electron
+yarn serve:electron // or npm server:electron
 ```
