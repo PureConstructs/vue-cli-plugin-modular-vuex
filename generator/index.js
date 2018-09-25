@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const recast = require('recast')
 
-module.exports = (api, options, rootOptions) => {
+module.exports = (api, options, rootOptions, invoking) => {
   const storeRootDir = './src/store'
   const storeRootFile = './src/store/index.js'
   const templatesRoot = './templates'
@@ -10,7 +10,7 @@ module.exports = (api, options, rootOptions) => {
 
   // Verify vuex plugin installed
   if (!api.hasPlugin('vuex')) {
-    console.warn('\nVuex plugin has not been installed')
+    api.exitLog('Vuex plugin has not been installed', 'warn')
     return
   }
 
@@ -29,21 +29,33 @@ module.exports = (api, options, rootOptions) => {
     [`${moduleDir}/mutations.js`]: `${templatesRoot}/module/mutations.js`
   })
 
+  api.exitLog('Rendered template files', 'info')
+
   // Verify storeRootFile exists, if not render
   if (!fs.existsSync(`${storeRootFile}`)) {
     api.render({
       [`${storeRootFile}`]: `${templatesRoot}/index.js`
     })
+    api.exitLog('Store root file rendered', 'info')
   }
 
   // inject import declaration for new store module
-  api.injectImports(`${storeRootFile}`, `import ${options.moduleName} from './${options.moduleName}'`)
+  // api.injectImports(`${storeRootFile}`, `import ${options.moduleName} from './${options.moduleName}'`)
 
-  api.postProcessFiles((files) => {
-    const ast = recast.parse(files[`${storeRootFile}`])
+
+  api.onCreateComplete((files) => {
+    // inject new module name into the root store file modules option
+    const code = fs.readFileSync(`${storeRootFile}`, 'utf8')
+    const ast = recast.parse(code)
+
+    // New option expression to inject
     const expression = `${options.moduleName}`
     const objectExpression = recast.parse(expression).program.body[0].expression
 
+    // New Import Declaration to inject
+    const imports = [`import ${options.moduleName} from './${options.moduleName}'`]
+
+    // Inject new option expression
     recast.types.visit(ast, {
       visitObjectExpression({
         node
@@ -56,10 +68,33 @@ module.exports = (api, options, rootOptions) => {
       }
     })
 
-    files[`${storeRootFile}`] = recast.print(ast).code
-  })
+    // Inject new Import declaration
+    const toImport = i => recast.parse(`${i}\n`).program.body[0];
+    const importDeclarations = []
+    let lastImportIndex = -1
 
-  api.onCreateComplete(() => {
+    recast.types.visit(ast, {
+      visitImportDeclaration({
+        node
+      }) {
+        lastImportIndex = ast.program.body.findIndex(n => n === node)
+        importDeclarations.push(node)
+        return false;
+      }
+    });
+    delete ast.program.body[lastImportIndex].loc
+
+    const newImport = imports.map(toImport);
+    ast.program.body.splice(lastImportIndex + 1, 0, ...newImport)
+
+    // files[`${storeRootFile}`] = recast.print(ast).code
+    fs.writeFile(`${storeRootFile}`, recast.print(ast).code, (err) => {
+      if (err) {
+        api.exitLog('Error writing to index.js: ' + err, 'error')
+        return
+      }
+    })
+
     // Remove store.js generated from initial vuex plugin installation
     if (fs.existsSync('./src/store.js')) {
       fs.unlink('./src/store.js', (err) => {
