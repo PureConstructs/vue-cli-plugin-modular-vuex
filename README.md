@@ -1,3 +1,10 @@
+<a href="https://npmjs.com/package/vue-cli-plugin-modular-vuex">
+    <img alt="" src="https://img.shields.io/npm/v/vue-cli-plugin-modular-vuex/latest.svg?style=flat-square">
+</a>
+<a href="https://npmjs.com/package/vue-cli-plugin-modular-vuex">
+    <img alt="" src="https://img.shields.io/npm/dm/vue-cli-plugin-modular-vuex.svg?style=flat-square">
+</a>
+
 # vue-cli-plugin-modular-vuex
 
 Create Modular Vuex stores for [vue-cli@3.0](https://github.com/vuejs/vue-cli)
