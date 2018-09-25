@@ -41,18 +41,18 @@ module.exports = (api, options, rootOptions) => {
     [`${moduleDir}/mutations.js`]: `${templatesRoot}/module/mutations.js`
   })
 
-  // Verify rootStoreFile exists, if not render
-  if (!fs.existsSync(`storeRootFile`)) {
+  // Verify storeRootFile exists, if not render
+  if (!fs.existsSync(`${storeRootFile}`)) {
     api.render({
-      [`storeRootFile`]: `${templatesRoot}/index.js`
+      [`${storeRootFile}`]: `${templatesRoot}/index.js`
     })
   }
 
   // inject import declaration for new store module
-  api.injectImports(`storeRootFile`, `import ${options.moduleName} from './${options.moduleName}'`)
+  api.injectImports(`${storeRootFile}`, `import ${options.moduleName} from './${options.moduleName}'`)
 
   api.postProcessFiles((files) => {
-    const ast = recast.parse(files[`storeRootFile`])
+    const ast = recast.parse(files[`${storeRootFile}`])
     const expression = `${options.moduleName}`
     const objectExpression = recast.parse(expression).program.body[0].expression
 
@@ -68,7 +68,7 @@ module.exports = (api, options, rootOptions) => {
       }
     })
 
-    files[rootStoreFile] = recast.print(ast).code
+    files[`${storeRootFile}`] = recast.print(ast).code
   })
 
 }
