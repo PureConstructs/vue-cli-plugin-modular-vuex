@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-modular-vuex",
-  "version": "0.15.0",
+  "version": "0.15.1",
   "description": "vue-cli 3 plugin to create modular vuex stores",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
   ],
   "author": "Eric Cormier <Eric@Pureconstructs.com>",
   "license": "MIT",
-  "homepage": "https://github.com/PureConstructs/vue-cli-plugin-modular-vuexh#readme",
+  "homepage": "https://github.com/PureConstructs/vue-cli-plugin-modular-vuex#readme",
   "devDependencies": {
     "@vue/cli-service": "^3.0.1"
   },
