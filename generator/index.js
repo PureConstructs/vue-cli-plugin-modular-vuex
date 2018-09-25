@@ -60,8 +60,8 @@ module.exports = (api, options, rootOptions) => {
       visitObjectExpression({
         node
       }) {
-        if (node.properties.key.name === 'modules') {
-          node.properties.value.properties.push(objectExpression)
+        if (node.properties[0].key.name === 'modules') {
+          node.properties[0].value.properties.push(objectExpression)
         }
 
         return false
