@@ -12,9 +12,11 @@
   },
   "keywords": [
     "vuex",
+    "store",
     "vue",
     "cli",
-    "3"
+    "3",
+    "plugin"
   ],
   "author": "Eric Cormier <Eric@Pureconstructs.com>",
   "license": "MIT",
